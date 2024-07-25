@@ -5,13 +5,14 @@ var isInArea = false
 var note = preload("res://note.tscn")
 var noteInstance
 var currentNote
+var bpm = 151.2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$songTimer.start()
 
 
 func _physics_process(delta):
-	beat += 0.042
+	beat += bpm/60/60
 	spawn(7)
 	spawn(7.5)
 	spawn(8)
@@ -149,6 +150,39 @@ func _physics_process(delta):
 	spawn(159)
 	spawn(160.5)
 	spawn(161)
+	
+	spawn(166)
+	spawn(167)
+	spawn(168)
+	spawn(169)
+	spawn(170)
+	
+	spawn(175)
+	spawn(176)
+	spawn(176.6)
+	spawn(177)
+	
+	spawn(181.5)
+	spawn(182)
+	spawn(182.5)
+	spawn(183)
+	spawn(183.5)
+	spawn(184)
+	spawn(184.5)
+	
+	spawn(186)
+	spawn(186.5)
+	spawn(187)
+	spawn(187.5)
+	spawn(188)
+	
+	spawn(189.5)
+	spawn(190)
+	spawn(190.5)
+	spawn(191)
+	spawn(191.5)
+	spawn(192)
+	
 	
 func _process(delta):
 	get_overlapping_areas()
