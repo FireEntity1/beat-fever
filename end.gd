@@ -76,7 +76,7 @@ func _physics_process(delta):
 	spawn(79)
 	spawn(80)
 	spawn(81)
-	spawn(82.6)
+	spawn(82.4)
 	spawn(84)
 	spawn(85.5)
 	spawn(87)
@@ -151,39 +151,55 @@ func _physics_process(delta):
 	spawn(160.5)
 	spawn(161)
 	
-	spawn(166)
 	spawn(167)
+	spawn(167.5)
 	spawn(168)
 	spawn(169)
 	spawn(170)
 	
 	spawn(175)
 	spawn(176)
-	spawn(176.6)
+	spawn(176.5)
 	spawn(177)
 	
-	spawn(181.5)
-	spawn(182)
-	spawn(182.5)
-	spawn(183)
-	spawn(183.5)
-	spawn(184)
-	spawn(184.5)
+	spawn(181+0.5)
+	spawn(181.5+0.5)
+	spawn(182+0.5)
+	spawn(182.5+0.5)
+	spawn(183+0.5)
+	spawn(183.5+0.5)
+	spawn(184+0.5)
 	
-	spawn(186)
 	spawn(186.5)
 	spawn(187)
 	spawn(187.5)
 	spawn(188)
+	spawn(188.5)
 	
-	spawn(189.5)
-	spawn(190)
-	spawn(190.5)
-	spawn(191)
-	spawn(191.5)
-	spawn(192)
+	spawn(190+0.5)
+	spawn(190.5+0.5)
+	spawn(191+0.5)
+	spawn(191.5+0.5)
+	spawn(192+0.5)
 	
-	
+	spawn(203-2)
+	spawn(204.5-2)
+	spawn(206-2)
+	spawn(207.5-2)
+	spawn(209-2)
+	spawn(211-2)
+	spawn(212.1-2)
+	spawn(213.5-2)
+	spawn(215-2)
+	spawn(216.5-2)
+	spawn(218-2)
+	spawn(219-2)
+	spawn(220-2)
+	spawn(221.5-2)
+	spawn(223-2)
+	spawn(224.5-2)
+	spawn(226-2)
+	spawn(226.5-2)
 func _process(delta):
 	get_overlapping_areas()
 	if Input.is_action_just_pressed("click"):
@@ -200,6 +216,7 @@ func _on_area_entered(area):
 
 func _on_bpm_timer_timeout():
 	$Music.play()
+	# beat = 196
 
 func spawn(fireBeat,fired=false):
 	if beat >= fireBeat - 4 and beat < fireBeat-3.96:
