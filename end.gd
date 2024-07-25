@@ -6,6 +6,10 @@ var note = preload("res://note.tscn")
 var noteInstance
 var currentNote
 var bpm = 151.2
+var misses = 0
+var hits = 0
+var accuracy = 0
+var total = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$songTimer.start()
@@ -105,7 +109,6 @@ func _physics_process(delta):
 	spawn(112.5)
 	spawn(113)
 	
-	
 	spawn(117.5)
 	spawn(118)
 	spawn(119)
@@ -199,15 +202,85 @@ func _physics_process(delta):
 	spawn(223-2)
 	spawn(224.5-2)
 	spawn(226-2)
-	spawn(226.5-2)
+	spawn(224.5)
+	
+	spawn(229.6)
+	spawn(230)
+	spawn(230.5)
+	spawn(231)
+	spawn(232)
+	spawn(232.5)
+	spawn(233)
+	
+	spawn(237.5)
+	spawn(238)
+	spawn(238.5)
+	spawn(239)
+	spawn(240)
+	spawn(240.5)
+	spawn(241)
+	
+	spawn(245.5)
+	spawn(246)
+	spawn(247)
+	spawn(248)
+	spawn(248.5)
+	spawn(249)
+	
+	spawn(253.5)
+	spawn(254)
+	spawn(254.5)
+	spawn(255)
+	spawn(256.5)
+	spawn(257)
+	
+	spawn(261.5)
+	spawn(262)
+	spawn(262.5)
+	spawn(263)
+	spawn(264)
+	spawn(264.5)
+	spawn(265)
+	
+	spawn(269.5)
+	spawn(270)
+	spawn(270.5)
+	spawn(271.5)
+	spawn(272)
+	spawn(272.5)
+	spawn(273)
+	
+	spawn(277.5)
+	spawn(278)
+	spawn(278.5)
+	spawn(278)
+	spawn(279.5)
+	spawn(280)
+	spawn(280.5)
+	
+	spawn(285)
+	spawn(285.5)
+	spawn(286)
+	spawn(286.5)
+	spawn(287)
+	spawn(287.5)
+	spawn(288.1)
+	
 func _process(delta):
+	total = hits + misses
 	get_overlapping_areas()
 	if Input.is_action_just_pressed("click"):
 		if isInArea == false:
 			print("miss")
+			misses += 1
 		if isInArea == true:
 			print("hit!")
 			currentNote.queue_free()
+			hits += 1
+	$hits.text = str(hits)
+	$misses.text = str(misses)
+	$accuracy.text = str(accuracy)
+	accuracy = (float(hits)+1)/(float(total)+1)
 
 func _on_area_entered(area):
 	isInArea = true
@@ -225,3 +298,7 @@ func spawn(fireBeat,fired=false):
 
 func _on_area_exited(area):
 	isInArea = false
+
+
+func _on_miss_area_entered(area):
+	misses += 1

@@ -1,18 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://2081hjf0n8l3"]
+[gd_scene load_steps=9 format=3 uid="uid://2081hjf0n8l3"]
 
 [ext_resource type="Script" path="res://end.gd" id="1_3igq8"]
 [ext_resource type="Texture2D" uid="uid://bju38wtmv64o5" path="res://Sprites/bg.png" id="1_71mgb"]
 [ext_resource type="AudioStream" uid="uid://bwaybyarsaxeg" path="res://music.ogg" id="3_gqwj4"]
+[ext_resource type="FontFile" uid="uid://dn4uv655m5tr1" path="res://Sprites/silkscreen.ttf" id="4_detxu"]
 [ext_resource type="Texture2D" uid="uid://dkh0qhwcjkddt" path="res://Sprites/base.png" id="4_qddjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uaejy"]
 size = Vector2(20, 16.4227)
 
+[sub_resource type="Theme" id="Theme_uaddx"]
+default_font = ExtResource("4_detxu")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqcyk"]
+size = Vector2(264, 20)
+
 [node name="root" type="Node2D"]
 
 [node name="Bg" type="Sprite2D" parent="."]
 position = Vector2(2, 1)
-scale = Vector2(11.4415, 11.4415)
+scale = Vector2(12.5625, 16.6)
 texture = ExtResource("1_71mgb")
 
 [node name="end" type="Area2D" parent="."]
@@ -33,6 +40,36 @@ position = Vector2(-1, -213)
 stream = ExtResource("3_gqwj4")
 volume_db = 2.811
 
+[node name="misses" type="Label" parent="end"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 237.0
+offset_top = -88.0
+offset_right = 277.0
+offset_bottom = -65.0
+scale = Vector2(5.14813, 5.14813)
+theme = SubResource("Theme_uaddx")
+horizontal_alignment = 1
+
+[node name="accuracy" type="Label" parent="end"]
+offset_left = -561.0
+offset_top = -521.0
+offset_right = -521.0
+offset_bottom = -498.0
+scale = Vector2(5.14813, 5.14813)
+theme = SubResource("Theme_uaddx")
+horizontal_alignment = 1
+text_overrun_behavior = 1
+
+[node name="hits" type="Label" parent="end"]
+modulate = Color(0, 1, 0, 1)
+offset_left = -430.0
+offset_top = -84.0
+offset_right = -390.0
+offset_bottom = -61.0
+scale = Vector2(5.14813, 5.14813)
+theme = SubResource("Theme_uaddx")
+horizontal_alignment = 1
+
 [node name="MainCam" type="Camera2D" parent="."]
 
 [node name="Base" type="Sprite2D" parent="."]
@@ -40,6 +77,13 @@ position = Vector2(5, 189)
 scale = Vector2(1, 2.53333)
 texture = ExtResource("4_qddjw")
 
+[node name="miss" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="miss"]
+position = Vector2(0, 298)
+shape = SubResource("RectangleShape2D_bqcyk")
+
 [connection signal="area_entered" from="end" to="end" method="_on_area_entered"]
 [connection signal="area_exited" from="end" to="end" method="_on_area_exited"]
 [connection signal="timeout" from="end/songTimer" to="end" method="_on_bpm_timer_timeout"]
+[connection signal="area_entered" from="miss" to="end" method="_on_miss_area_entered"]
