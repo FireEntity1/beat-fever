@@ -14,7 +14,7 @@ func _process(delta):
 	pass
 	
 func _physics_process(delta):
-	position.y += 6.84
+	position.y += 11.9047619048/2
 
 
 func _on_end_area_entered(area):

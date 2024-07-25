@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj78frgdr2ne4"]
+
+[ext_resource type="Script" path="res://title.gd" id="1_yve06"]
+
+[node name="title" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 419.0
+offset_top = 222.0
+offset_right = 531.0
+offset_bottom = 276.0
+scale = Vector2(4.00415, 4.00415)
+script = ExtResource("1_yve06")
+
+[connection signal="button_up" from="Button" to="Button" method="_on_button_up"]

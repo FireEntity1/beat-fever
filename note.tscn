@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://note.gd" id="1_udu4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gj1cf"]
+size = Vector2(20, 8.54065)
 
 [node name="Note" type="Node2D"]
 
@@ -16,5 +17,6 @@ scale = Vector2(4.47923, 1.63923)
 shape = SubResource("RectangleShape2D_gj1cf")
 
 [node name="beatSprite" type="Sprite2D" parent="note"]
-scale = Vector2(1, 0.36)
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(1, 0.0444443)
 texture = ExtResource("1_36r2h")
