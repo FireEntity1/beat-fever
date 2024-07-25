@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://2081hjf0n8l3"]
+
+[ext_resource type="Script" path="res://end.gd" id="1_3igq8"]
+[ext_resource type="PackedScene" uid="uid://bcle1v65sfgep" path="res://note.tscn" id="2_qm6ev"]
+[ext_resource type="AudioStream" uid="uid://bwaybyarsaxeg" path="res://music.ogg" id="3_gqwj4"]
+[ext_resource type="Texture2D" uid="uid://dkh0qhwcjkddt" path="res://Sprites/base.png" id="4_qddjw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uaejy"]
+size = Vector2(20, 22.7254)
+
+[node name="root" type="Node2D"]
+
+[node name="MainCam" type="Camera2D" parent="."]
+
+[node name="end" type="Area2D" parent="."]
+position = Vector2(1, 213)
+script = ExtResource("1_3igq8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="end"]
+position = Vector2(0, -6.10387)
+scale = Vector2(4.47923, 0.679224)
+shape = SubResource("RectangleShape2D_uaejy")
+
+[node name="bpmTimer" type="Timer" parent="end"]
+wait_time = 0.397
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gqwj4")
+volume_db = 2.811
+autoplay = true
+
+[node name="Note" parent="." instance=ExtResource("2_qm6ev")]
+
+[node name="Base" type="Sprite2D" parent="."]
+position = Vector2(5, 198)
+texture = ExtResource("4_qddjw")
+
+[connection signal="area_entered" from="end" to="end" method="_on_area_entered"]
+[connection signal="area_exited" from="end" to="end" method="_on_area_exited"]
+[connection signal="timeout" from="end/bpmTimer" to="end" method="_on_bpm_timer_timeout"]
