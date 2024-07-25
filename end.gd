@@ -91,20 +91,73 @@ func _physics_process(delta):
 	spawn(101.5)
 	spawn(102)
 	spawn(102.5)
+	spawn(103)
+	spawn(104)
+	spawn(104.5)
+	spawn(105)
+	
+	spawn(109.5)
+	spawn(110)
+	spawn(110.5)
+	spawn(111)
+	spawn(112)
+	spawn(112.5)
+	spawn(113)
 	
 	
+	spawn(117.5)
+	spawn(118)
+	spawn(119)
+	spawn(120)
+	spawn(120.5)
+	spawn(121)
 	
+	spawn(125.5)
+	spawn(126)
+	spawn(126.5)
+	spawn(127)
+	spawn(128.5)
+	spawn(129)
 	
-
+	spawn(133.5)
+	spawn(134)
+	spawn(134.5)
+	spawn(135)
+	spawn(136)
+	spawn(136.5)
+	spawn(137)
+	
+	spawn(141.5)
+	spawn(142)
+	spawn(142.5)
+	spawn(143.5)
+	spawn(144)
+	spawn(144.5)
+	spawn(145)
+	
+	spawn(149.5)
+	spawn(150)
+	spawn(150.5)
+	spawn(151)
+	spawn(152)
+	spawn(152.5)
+	spawn(153)
+	
+	spawn(157.5)
+	spawn(158)
+	spawn(158.5)
+	spawn(159)
+	spawn(160.5)
+	spawn(161)
+	
 func _process(delta):
 	get_overlapping_areas()
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("click"):
 		if isInArea == false:
 			print("miss")
 		if isInArea == true:
 			print("hit!")
 			currentNote.queue_free()
-
 
 func _on_area_entered(area):
 	isInArea = true

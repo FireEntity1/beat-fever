@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dkh0qhwcjkddt" path="res://Sprites/base.png" id="4_qddjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uaejy"]
-size = Vector2(20, 13.81)
+size = Vector2(20, 16.4227)
 
 [node name="root" type="Node2D"]
 
@@ -20,7 +20,7 @@ position = Vector2(1, 213)
 script = ExtResource("1_3igq8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="end"]
-position = Vector2(0, -3.5)
+position = Vector2(0, -7)
 scale = Vector2(4.47923, 2.67922)
 shape = SubResource("RectangleShape2D_uaejy")
 
