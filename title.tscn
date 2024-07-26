@@ -1,15 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj78frgdr2ne4"]
+[gd_scene load_steps=6 format=3 uid="uid://bj78frgdr2ne4"]
 
+[ext_resource type="FontFile" uid="uid://dn4uv655m5tr1" path="res://Sprites/silkscreen.ttf" id="1_npbdx"]
+[ext_resource type="Texture2D" uid="uid://bju38wtmv64o5" path="res://Sprites/bg.png" id="1_pw7fc"]
 [ext_resource type="Script" path="res://title.gd" id="1_yve06"]
+
+[sub_resource type="Theme" id="Theme_2o1l1"]
+default_font = ExtResource("1_npbdx")
+
+[sub_resource type="Theme" id="Theme_hwq6s"]
+default_font = ExtResource("1_npbdx")
 
 [node name="title" type="Node2D"]
 
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(8, 1)
+scale = Vector2(9.41579, 9.41579)
+texture = ExtResource("1_pw7fc")
+
 [node name="Button" type="Button" parent="."]
-offset_left = 419.0
-offset_top = 222.0
-offset_right = 531.0
-offset_bottom = 276.0
-scale = Vector2(4.00415, 4.00415)
+offset_left = -256.0
+offset_top = -116.0
+offset_right = 1395.0
+offset_bottom = 680.0
+scale = Vector2(0.310316, 0.310316)
+theme = SubResource("Theme_2o1l1")
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+theme_override_colors/icon_hover_color = Color(0.244776, 0.244776, 0.244776, 1)
+theme_override_font_sizes/font_size = 250
+text = "play"
 script = ExtResource("1_yve06")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -300.0
+offset_top = -283.0
+offset_right = -192.0
+offset_bottom = -260.0
+scale = Vector2(5.60443, 5.60443)
+theme = SubResource("Theme_hwq6s")
+text = "BEAT FEVER"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -548.0
+offset_top = -67.0
+offset_right = -121.0
+offset_bottom = 224.0
+scale = Vector2(0.642954, 0.642954)
+theme = SubResource("Theme_hwq6s")
+theme_override_font_sizes/font_size = 50
+text = "Controls:
+W,Z,X,SPACE,
+ENTER,K,CLICK"
 
 [connection signal="button_up" from="Button" to="Button" method="_on_button_up"]

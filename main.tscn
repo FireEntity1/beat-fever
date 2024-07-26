@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2081hjf0n8l3"]
+[gd_scene load_steps=10 format=3 uid="uid://2081hjf0n8l3"]
 
 [ext_resource type="Script" path="res://end.gd" id="1_3igq8"]
 [ext_resource type="Texture2D" uid="uid://bju38wtmv64o5" path="res://Sprites/bg.png" id="1_71mgb"]
@@ -10,6 +10,9 @@
 size = Vector2(20, 16.4227)
 
 [sub_resource type="Theme" id="Theme_uaddx"]
+default_font = ExtResource("4_detxu")
+
+[sub_resource type="Theme" id="Theme_ehdrb"]
 default_font = ExtResource("4_detxu")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bqcyk"]
@@ -53,10 +56,11 @@ horizontal_alignment = 1
 [node name="accuracy" type="Label" parent="end"]
 offset_left = -561.0
 offset_top = -521.0
-offset_right = -521.0
+offset_right = -513.0
 offset_bottom = -498.0
 scale = Vector2(5.14813, 5.14813)
 theme = SubResource("Theme_uaddx")
+text = "0.00"
 horizontal_alignment = 1
 text_overrun_behavior = 1
 
@@ -68,6 +72,18 @@ offset_right = -390.0
 offset_bottom = -61.0
 scale = Vector2(5.14813, 5.14813)
 theme = SubResource("Theme_uaddx")
+horizontal_alignment = 1
+
+[node name="finishText" type="Label" parent="end"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -349.0
+offset_top = -353.0
+offset_right = -231.0
+offset_bottom = -308.0
+scale = Vector2(5.94495, 5.51328)
+theme = SubResource("Theme_ehdrb")
+text = "Thanks for
+playing!!!"
 horizontal_alignment = 1
 
 [node name="MainCam" type="Camera2D" parent="."]
@@ -86,4 +102,5 @@ shape = SubResource("RectangleShape2D_bqcyk")
 [connection signal="area_entered" from="end" to="end" method="_on_area_entered"]
 [connection signal="area_exited" from="end" to="end" method="_on_area_exited"]
 [connection signal="timeout" from="end/songTimer" to="end" method="_on_bpm_timer_timeout"]
+[connection signal="finished" from="end/Music" to="end" method="_on_music_finished"]
 [connection signal="area_entered" from="miss" to="end" method="_on_miss_area_entered"]

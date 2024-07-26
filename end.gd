@@ -279,8 +279,8 @@ func _process(delta):
 			hits += 1
 	$hits.text = str(hits)
 	$misses.text = str(misses)
-	$accuracy.text = str(accuracy)
-	accuracy = (float(hits)+1)/(float(total)+1)
+	$accuracy.text = str(accuracy*100) + "%"
+	accuracy = round_to_dec((float(hits)+1)/(float(total)+1), 2)
 
 func _on_area_entered(area):
 	isInArea = true
@@ -302,3 +302,9 @@ func _on_area_exited(area):
 
 func _on_miss_area_entered(area):
 	misses += 1
+
+func round_to_dec(num, digit):
+	return round(num * pow(10.0, digit)) / pow(10.0, digit)
+
+func _on_music_finished():
+	$finishText.modulate.a = 1
