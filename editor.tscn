@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://i356mh6d43sg"]
+
+[ext_resource type="FontFile" uid="uid://dn4uv655m5tr1" path="res://Sprites/silkscreen.ttf" id="1_8wey6"]
+[ext_resource type="Script" path="res://editor.gd" id="1_ynw6m"]
+[ext_resource type="Texture2D" uid="uid://l52kw0k5win5" path="res://icon.svg" id="2_ssx4w"]
+[ext_resource type="PackedScene" uid="uid://bmkxyxxl12k53" path="res://noteEdit.tscn" id="3_0g52l"]
+
+[sub_resource type="Theme" id="Theme_f0cup"]
+default_font = ExtResource("1_8wey6")
+
+[sub_resource type="Theme" id="Theme_no2pt"]
+default_font = ExtResource("1_8wey6")
+
+[sub_resource type="Theme" id="Theme_f25s1"]
+default_font = ExtResource("1_8wey6")
+
+[node name="editor" type="Node2D"]
+script = ExtResource("1_ynw6m")
+
+[node name="camera" type="Camera2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -346.0
+offset_top = -328.0
+offset_right = 327.0
+offset_bottom = 323.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
+layout_mode = 2
+
+[node name="Icon" type="Sprite2D" parent="Control/ScrollContainer"]
+position = Vector2(-147, 1168)
+scale = Vector2(6.55469, 2.37109)
+texture = ExtResource("2_ssx4w")
+
+[node name="Icon2" type="Sprite2D" parent="Control/ScrollContainer"]
+position = Vector2(332, 945)
+texture = ExtResource("2_ssx4w")
+
+[node name="bpm" type="LineEdit" parent="."]
+offset_left = -570.0
+offset_top = -318.0
+offset_right = -477.0
+offset_bottom = -265.0
+theme = SubResource("Theme_f0cup")
+placeholder_text = "BPM"
+
+[node name="Player" type="AudioStreamPlayer2D" parent="."]
+
+[node name="fileOpen" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+show_hidden_files = true
+use_native_dialog = true
+
+[node name="open" type="Button" parent="."]
+offset_left = -565.0
+offset_top = -256.0
+offset_right = -479.0
+offset_bottom = -210.0
+theme = SubResource("Theme_no2pt")
+text = "OPEN"
+
+[node name="noteEdit" parent="." instance=ExtResource("3_0g52l")]
+position = Vector2(-337, 461)
+
+[node name="noteEditor" type="ItemList" parent="."]
+offset_left = -44.0
+offset_top = -255.0
+offset_right = 43.0
+offset_bottom = 292.0
+theme = SubResource("Theme_f25s1")
+allow_reselect = true
+allow_rmb_select = true
+auto_height = true
+item_count = 1
+item_0/text = "1"
+
+[connection signal="file_selected" from="fileOpen" to="." method="_on_file_open_file_selected"]
+[connection signal="button_up" from="open" to="." method="_on_open_button_up"]
